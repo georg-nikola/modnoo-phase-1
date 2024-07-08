@@ -1,0 +1,16 @@
+name: Build container image
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repository dispatch event
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: georg-nikola/mondoo-phase-2
+          event-type: build-docker
