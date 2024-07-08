@@ -10,5 +10,8 @@ func main() {
 		fmt.Fprintf(w, "Hello from Mondoo Engineer!")
 	})
 
-	http.ListenAndServe(":80", nil)
+	err := http.ListenAndServe(":80", nil)
+	if err != nil {
+		fmt.Println("Error starting server:", err)
+	}
 }
